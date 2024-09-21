@@ -22,6 +22,13 @@ export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
+    SCProLight: require('../assets/fonts/SourceCodePro-Light.ttf'),
+    SCProBold: require('../assets/fonts/SourceCodePro-Bold.ttf'),
+    SCProLightItalic: require('../assets/fonts/SourceCodePro-LightItalic.ttf'),
+    SCProMediumItalic: require('../assets/fonts/SourceCodePro-MediumItalic.ttf'),
+    SCProRegular: require('../assets/fonts/SourceCodePro-Regular.ttf'),
+    SCProSemiBold: require('../assets/fonts/SourceCodePro-SemiBold.ttf'),
+    SCProItalic: require('../assets/fonts/SourceCodePro-Italic.ttf'),
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.

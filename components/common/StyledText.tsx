@@ -2,6 +2,7 @@ import React from 'react';
 import type { StyleProp, TextStyle } from 'react-native';
 import { Text as NativeText, StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import Animated from 'react-native-reanimated';
 
 type StyledTextProps = {
   children: React.ReactNode;
@@ -9,6 +10,8 @@ type StyledTextProps = {
   font?: 'bold' | 'regular' | 'medium' | 'semiBold' | 'light' | 'thin';
   variant?: 'text' | 'link' | 'primary' | 'secondary' | 'error';
   style?: StyleProp<TextStyle>;
+  animated?: boolean;
+  italic?: boolean;
 };
 
 /**
@@ -25,6 +28,8 @@ const StyledText = ({
   size = 'md',
   variant = 'text',
   font = 'regular',
+  animated,
+  italic,
   ...rest
 }: StyledTextProps & NativeText['props']) => {
   const sizes: Record<NonNullable<StyledTextProps['size']>, number> = {
@@ -53,6 +58,41 @@ const StyledText = ({
     secondary: Colors.palette.secondary,
     error: Colors.palette.error,
   };
+
+  const fontFamilies = () => {
+    if (font === 'bold') {
+      return 'SCProBold';
+    } else if (font === 'semiBold') {
+      return 'SCProSemiBold';
+    } else if (font === 'medium') {
+      return italic ? 'SCProMediumItalic' : 'SCProMedium';
+    } else if (font === 'regular') {
+      return 'SCProRegular';
+    } else if (font === 'light') {
+      return italic ? 'SCProLightItalic' : 'SCProLight';
+    } else {
+      if (italic) {
+        return 'SCProItalic';
+      }
+    }
+  };
+
+  if (animated) {
+    return (
+      <Animated.Text
+        style={StyleSheet.compose(
+          {
+            fontSize: sizes[size],
+            color: variants[variant],
+            fontWeight: fonts[font],
+            fontFamily: fontFamilies(),
+          },
+          style,
+        )}
+        {...rest}
+      />
+    );
+  }
 
   return (
     <NativeText

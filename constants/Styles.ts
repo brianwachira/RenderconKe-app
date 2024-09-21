@@ -17,3 +17,18 @@ export const spacing = {
   xl: 18,
   xxl: 20,
 } as const;
+
+// font family
+export const fontFamilies = {
+  fontFamilyBold: 'SCProBold',
+  fontFamilyLight: 'SCProLight',
+  fontFamilyMediumItalic: 'SCProMediumItalic',
+  fontFamilyRegular: 'SCProRegular',
+  fontFamilySemiBold: 'SCProSemiBold',
+  fontFamilyItalic: 'SCProItalic',
+  fontFamilyLightItalic: 'SCProLightItalic',
+} as const;
+
+export const COLLAPSED_HEADER = 55;
+export const EXPANDED_HEADER = 176;
+export const ROW_HEIGHT = 55;
