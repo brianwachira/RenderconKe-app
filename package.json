@@ -39,7 +39,9 @@
     "react-native-screens": "3.31.1",
     "react-native-svg": "15.2.0",
     "react-native-web": "~0.19.10",
-    "use-async-effect": "^2.2.7"
+    "use-async-effect": "^2.2.7",
+    "zustand": "^5.0.0-rc.2",
+    "react-native-gesture-handler": "~2.16.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
