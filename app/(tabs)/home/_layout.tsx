@@ -5,7 +5,6 @@ import { Tabs } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import StyledText from '@/components/common/StyledText';
-import MainHeader from '@/components/headers/MainHeader';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: { name: React.ComponentProps<typeof MaterialCommunityIcons>['name']; color: string }) {
@@ -41,14 +40,7 @@ export default function TabLayout() {
               Schedule
             </StyledText>
           ),
-          headerStyle: {
-            backgroundColor: Colors.palette.primary,
-            height: 120,
-            elevation: 0,
-            shadowOpacity: 0,
-            borderBottomWidth: 0,
-          },
-          headerTitle: () => <MainHeader />,
+          headerShown: false,
         }}
       />
       <Tabs.Screen
@@ -67,7 +59,7 @@ export default function TabLayout() {
             shadowOpacity: 0,
             borderBottomWidth: 0,
           },
-          headerTitle: () => <MainHeader />,
+          headerTitle: () => null,
         }}
       />
       <Tabs.Screen
@@ -86,7 +78,7 @@ export default function TabLayout() {
             shadowOpacity: 0,
             borderBottomWidth: 0,
           },
-          headerTitle: () => <MainHeader />,
+          headerTitle: () => null,
         }}
       />
       <Tabs.Screen
@@ -105,7 +97,7 @@ export default function TabLayout() {
             shadowOpacity: 0,
             borderBottomWidth: 0,
           },
-          headerTitle: () => <MainHeader />,
+          headerTitle: () => null,
         }}
       />
     </Tabs>
