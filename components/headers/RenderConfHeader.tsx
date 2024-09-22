@@ -1,10 +1,10 @@
 import { Image } from 'expo-image';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Animated, { Extrapolation, SharedValue, interpolate, useAnimatedStyle } from 'react-native-reanimated';
 import StyledText from '../common/StyledText';
 import { COLLAPSED_HEADER, EXPANDED_HEADER, ROW_HEIGHT } from '@/constants/Styles';
-import Colors from '@/constants/Colors';
+
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 
 const interpolateHeader = (scrollOffset: SharedValue<number>, outputRange: number[]) => {
@@ -27,9 +27,9 @@ export function RenderConfHeader({ scrollOffset }: RenderConfHeaderProps) {
   const firstLineStyle = useAnimatedStyle(() => ({
     transform: [
       { translateX: interpolateHeader(scrollOffset, [0, -45]) },
-      { translateY: interpolateHeader(scrollOffset, [0, 13]) },
+      { translateY: interpolateHeader(scrollOffset, [0, 0]) },
     ],
-    fontSize: interpolateHeader(scrollOffset, [36, 24]),
+    fontSize: interpolateHeader(scrollOffset, [28, 24]),
   }));
 
   const headerStyle = useAnimatedStyle(() => ({
@@ -40,23 +40,21 @@ export function RenderConfHeader({ scrollOffset }: RenderConfHeaderProps) {
     <Animated.View style={[styles.header, headerStyle]}>
       <AnimatedImage
         priority="high"
-        tintColor={Colors.palette.primary}
-        source={require('../assets/images/rendercon-white-logo.png')}
+        source={require('../../assets/images/rendercon-white-logo.png')}
         style={[styles.reactImage, animatedLogoStyle]}
+        contentFit={'contain'}
       />
-      <View>
-        <StyledText size="xxl" font="bold" style={[styles.logoText, firstLineStyle]} animated>
-          RENDERCONKE ‘24
-        </StyledText>
-      </View>
+      <StyledText font="bold" style={[styles.logoText, firstLineStyle]} animated>
+        RENDERCONKE ‘24
+      </StyledText>
     </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
   reactImage: {
-    width: 75,
-    height: 75,
+    width: 55,
+    height: 55,
   },
   logoText: {
     paddingStart: 8,
@@ -65,6 +63,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginHorizontal: 8,
+    paddingHorizontal: 8,
   },
 });

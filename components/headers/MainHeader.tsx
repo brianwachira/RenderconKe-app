@@ -29,5 +29,6 @@ const styles = StyleSheet.create({
     top: 0,
     zIndex: 1,
     width: '100%',
+    paddingHorizontal: 18,
   },
 });
