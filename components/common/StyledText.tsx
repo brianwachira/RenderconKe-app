@@ -76,7 +76,7 @@ const StyledText = ({
       }
     }
   };
-
+  console.log(fontFamilies());
   if (animated) {
     return (
       <Animated.Text

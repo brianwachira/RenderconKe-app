@@ -4,6 +4,7 @@ const text = '#fff';
 const black = '#141414';
 const errorColor = '#ff3232';
 const dark = '#000';
+const translucent = 'rgba(54,51,56,0.4)';
 
 export default {
   palette: {
@@ -13,5 +14,6 @@ export default {
     black: black,
     dark: dark,
     error: errorColor,
+    translucent: translucent,
   },
 };
