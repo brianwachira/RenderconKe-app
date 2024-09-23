@@ -51,7 +51,6 @@ const ListSchedule = ({
       ref={scrollRef}
       onViewableItemsChanged={onViewableItemsChanged}
       onScroll={scrollHandler}
-      //style={{ backgroundColor: sectionListBackgroundColor }}
       contentContainerStyle={{
         paddingTop: EXPANDED_HEADER / 2,
       }}

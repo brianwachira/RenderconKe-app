@@ -34,26 +34,24 @@ const CardSession = ({ item, variant = 'default' }: CardSessionProps) => {
     );
   }
   return (
-    <Link push href={{ pathname: '/session/[session/', params: { session: item.id } }} asChild>
+    <Link push href={{ pathname: '/session/[session]/', params: { session: item.id } }} asChild>
       <TouchableOpacity activeOpacity={0.8}>
         <View
-          style={{
-            backgroundColor: colors.palette.translucent,
-            borderColor: colors.palette.text,
-            borderWidth: 1,
-            padding: 18,
-            overflow: 'hidden',
-            borderRadius: 8,
-            marginHorizontal: 18,
-          }}
+          style={[
+            {
+              backgroundColor: colors.palette.translucent,
+              borderColor: colors.palette.text,
+            },
+            styles.contentContainer,
+          ]}
         >
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <View style={styles.contentRow}>
             <View>
               <StyledText size="base" font="medium" italic variant="text">
                 {item.title}
               </StyledText>
               <Space size={8} />
-              <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+              <View style={styles.rowEnd}>
                 <Ionicons name="location-outline" size={24} color={Colors.palette.secondary} />
                 <StyledText size="base" font="medium" italic variant="text">
                   {item.room}
@@ -68,16 +66,16 @@ const CardSession = ({ item, variant = 'default' }: CardSessionProps) => {
             <MaterialIcons name="bookmark-outline" size={24} color={Colors.palette.secondary} />
           </View>
 
-          <View style={{ height: 1, width: '100%', backgroundColor: Colors.palette.secondary, marginTop: 18 }} />
+          <View style={[{ backgroundColor: Colors.palette.secondary }, styles.horizontalRule]} />
           {item.speakers.map((speaker) => (
-            <View style={{ flexDirection: 'row', justifyContent: 'flex-start', width: '100%', marginTop: 18 }}>
-              <Image source={speaker.profilePicture} style={{ width: 67, height: 67, borderRadius: 8 }} />
+            <View style={styles.speakerContainer}>
+              <Image source={speaker.profilePicture} style={styles.speakerImage} />
               <Space size={18} horizontal />
               <View>
                 <StyledText size="md" font="bold" variant="text">
                   {speaker.fullName}
                 </StyledText>
-                <StyledText size="base" font="light" italic variant="text" style={{ width: '80%' }}>
+                <StyledText size="base" font="light" italic variant="text" style={styles.tagline}>
                   {speaker.tagLine}
                 </StyledText>
               </View>
@@ -96,4 +94,17 @@ const styles = StyleSheet.create({
     margin: 18,
     borderRadius: 8,
   },
+  contentContainer: {
+    borderWidth: 1,
+    padding: 18,
+    overflow: 'hidden',
+    borderRadius: 8,
+    marginHorizontal: 18,
+  },
+  tagline: { width: '80%' },
+  contentRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
+  rowEnd: { flexDirection: 'row', alignItems: 'flex-end' },
+  horizontalRule: { height: 1, width: '100%', marginTop: 18 },
+  speakerContainer: { flexDirection: 'row', justifyContent: 'flex-start', width: '100%', marginTop: 18 },
+  speakerImage: { width: 67, height: 67, borderRadius: 8 },
 });
